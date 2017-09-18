@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import { FormGroup, FormControl, InputGroup, Glyphicon} from 'react-bootstrap';
 import Profile from './Profile';
+import Gallery from './Gallery';
 
 class App extends Component {
 
@@ -23,9 +24,9 @@ search(){
     const BASE_URL = "https://api.spotify.com/v1/search?";
     let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;  
     const ALBUM_URL = "https://api.spotify.com/v1/artists/";
-    var accessToken = "BQBvz-VJjp5XmxBmabWVev3iDp61bRPtPw6QmZfI4gM3bjcO9bAc4sX9pE96Kwp0623AK7f9YQIeqp4_klaBa2Xdlx_YowjBWBig2WC_zc3jbq_9o9Qq48uOiROjm3_5K9rmWd604MGUZQdNHyDiNW92nzIXMmJpMXjO"; 
+    var accessToken = "BQDP6rUhGgPHfzitXyYFRCx4ZgoJxoDlJj9MdGfIYlxiGDOiEbXWyym5COfhXPeAnm4tQWoZ5SrNMEve0D3Z-xCCsrrZIBTmo9kML1a2YYqiYU94Nl69ug3hZsC_SrMoX3X9Fv2yjkGJIr1rQ0rjI6hzlvdno0mOF8s4"; 
     console.log('FETCH_URL', FETCH_URL);
-    var myHeaders = new Headers();
+    //var myHeaders = new Headers();
 
     var myOptions = { 
         method: "GET", 
@@ -87,7 +88,9 @@ search(){
                     artist ={this.state.artist}
                     />
 
-                    <div className="Gallery">Gallery</div>
+                    <Gallery
+                    tracks={this.state.tracks}
+                    />
                     </div>
                     
                     : <div></div>
