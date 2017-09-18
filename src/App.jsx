@@ -11,7 +11,8 @@ class App extends Component {
 
     this.state = { 
         query: "",
-        artist: null 
+        artist: null,
+        tracks: []
     };
 
 }
@@ -20,8 +21,9 @@ search(){
     //console.log(`This state: ${this.state.query}`);
     console.log('this.state ', this.state);
     const BASE_URL = "https://api.spotify.com/v1/search?";
-    const FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;  
-    var accessToken = "BQAcNN8t8kmpvq9UPzEdXlZCb_fAD0lkOoY5rAmoG2JEyMp0syaEjY_LAN96a0E0aEKFhgP5_GiZGjgsTB9dnXfGC67wZa3j0YQTWBegtjxhiZHiE-2rqphQc51Ruj-we7CG67uNVD1qpxFj9aiy7vMcA5Grtvfpcg0x"; 
+    let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;  
+    const ALBUM_URL = "https://api.spotify.com/v1/artists/";
+    var accessToken = "BQBvz-VJjp5XmxBmabWVev3iDp61bRPtPw6QmZfI4gM3bjcO9bAc4sX9pE96Kwp0623AK7f9YQIeqp4_klaBa2Xdlx_YowjBWBig2WC_zc3jbq_9o9Qq48uOiROjm3_5K9rmWd604MGUZQdNHyDiNW92nzIXMmJpMXjO"; 
     console.log('FETCH_URL', FETCH_URL);
     var myHeaders = new Headers();
 
@@ -40,6 +42,19 @@ search(){
           const artist = json.artists.items[0];
           console.log('artist: ', artist);
           this.setState({artist});
+
+        FETCH_URL = `${ALBUM_URL}${artist.id}/top-tracks?country=US&`;
+
+        fetch(FETCH_URL, myOptions)
+        .then(response => response.json())
+        .then(json => {
+            console.log('artist\'s top tracks: ', json);
+            const {tracks} = json;
+            this.setState({
+                tracks
+            })
+        })
+
       });                                
 }
 
@@ -64,12 +79,20 @@ search(){
                 </InputGroup.Addon>
               </InputGroup>
             </FormGroup>
+                {
+                    this.state.artist !== null
+                    ? 
+                    <div>
+                    <Profile
+                    artist ={this.state.artist}
+                    />
 
-            <Profile
-                artist ={this.state.artist}
-            />
-
-            <div className="Gallery">Gallery</div>
+                    <div className="Gallery">Gallery</div>
+                    </div>
+                    
+                    : <div></div>
+                    }
+            
           </div>;
     }
 }
