@@ -24,7 +24,7 @@ search(){
     const BASE_URL = "https://api.spotify.com/v1/search?";
     let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;  
     const ALBUM_URL = "https://api.spotify.com/v1/artists/";
-    var accessToken = "BQDP6rUhGgPHfzitXyYFRCx4ZgoJxoDlJj9MdGfIYlxiGDOiEbXWyym5COfhXPeAnm4tQWoZ5SrNMEve0D3Z-xCCsrrZIBTmo9kML1a2YYqiYU94Nl69ug3hZsC_SrMoX3X9Fv2yjkGJIr1rQ0rjI6hzlvdno0mOF8s4"; 
+    var accessToken = "BQChkEcQYq9aZQtJ3trKa8PTR8AWyb9U-LujJ4Uia9Atdimlu2z14nP0lYse3QaG1dWqmqX1JW0z2j4ZwZ03Jqn5k-ylwBnrStK6Bm3CQRckpFm-pc6aWSLVvx6w1UZ7aOwWEtFyCXDX9JPIgbQvYtZJ-D8DQfsQrMxq"; 
     console.log('FETCH_URL', FETCH_URL);
     //var myHeaders = new Headers();
 
