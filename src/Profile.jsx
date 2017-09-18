@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 class Profile extends Component {
+
+    
+
     render() {
         //console.log('this.props', this.props);
         let artist = {name:'', followers:{total:''}, images: [{url:''}], genres:[]}
